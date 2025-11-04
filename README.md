@@ -20,14 +20,12 @@ O projeto foi desenvolvido com base em um **wireframe** previamente planejado
 - ✅ Adicionar novas tarefas  
 - 🗑️ Excluir tarefas concluídas  
 - ✏️ Editar nomes de tarefas  
-- 🌙 Alternar entre tema claro/escuro (Descrever aqui as funcionalidades do seu app)
 
 
 ## 💻 Tecnologias Utilizadas
 > Descreva aqui quais as tecnologias utilizadas no projeto.
 
 - HTML, CSS e JavaScript  
-- (ou) Flutter / React Native / outra tecnologia utilizada
 
 ## 🚀 Como Executar o Projeto
 > Insira aqui orientações sobre como clonar o repositório e executar o projeto.
