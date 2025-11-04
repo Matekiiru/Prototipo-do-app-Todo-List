@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>To-Do List - Tarefas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="frame">
+    <header class="app-header">
+      <div class="avatar">👤</div>
+      <div>
+        <h1>Tarefas</h1>
+        <div class="muted" id="userEmail">usuário</div>
+      </div>
+      <div style="margin-left:auto">
+        <button id="logoutBtn" class="link-btn">Sair</button>
+      </div>
+    </header>
+
+    <main class="card" id="mainCard">
+      <div class="controls">
+        <div>
+          <select id="filter">
+            <option value="all">Todas</option>
+            <option value="active">Pendentes</option>
+            <option value="done">Concluídas</option>
+          </select>
+        </div>
+        <div>
+          <select id="sort">
+            <option value="created_desc">Novas primeiro</option>
+            <option value="created_asc">Antigas primeiro</option>
+            <option value="priority">Prioridade</option>
+          </select>
+        </div>
+      </div>
+
+      <ul id="taskList" class="task-list" aria-live="polite"></ul>
+
+      <div id="empty" class="muted center">Nenhuma tarefa. Use + para adicionar.</div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-item">🏠</a>
+      <a href="stats.html" class="nav-item">📊</a>
+      <button id="addFloating" class="fab">+</button>
+    </nav>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // page init
+    const current = localStorage.getItem('todo_current_user');
+    if(!current){ window.location.href = 'index.html'; }
+    document.getElementById('userEmail').textContent = current;
+    // wire add button
+    document.getElementById('addFloating').addEventListener('click', function(){
+      window.location.href = 'task.html';
+    });
+    document.getElementById('logoutBtn').addEventListener('click', function(){
+      localStorage.removeItem('todo_current_user');
+      window.location.href = 'index.html';
+    });
+
+    // render tasks for this page using shared functions in app.js
+    renderTaskList();
+    // connect filters/sort
+    document.getElementById('filter').addEventListener('change', renderTaskList);
+    document.getElementById('sort').addEventListener('change', renderTaskList);
+
+  </script>
+</body>
+</html>

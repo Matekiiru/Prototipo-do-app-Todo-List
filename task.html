@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Criar / Editar Tarefa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="frame">
+    <header class="app-header">
+      <button id="backBtn" class="link-btn">◀</button>
+      <h1>Criar/Editar tarefa</h1>
+    </header>
+
+    <main class="card">
+      <label for="title">Título</label>
+      <input id="title" placeholder="Título da tarefa">
+
+      <label for="desc">Descrição</label>
+      <textarea id="desc" rows="4" placeholder="Descrição (opcional)"></textarea>
+
+      <label for="when">Data/Hora</label>
+      <input id="when" placeholder="Opcional">
+
+      <label for="priority">Prioridade</label>
+      <select id="priority">
+        <option value="low">Baixa</option>
+        <option value="medium" selected>Média</option>
+        <option value="high">Alta</option>
+      </select>
+
+      <div style="margin-top:14px;display:flex;gap:10px;">
+        <button id="saveBtn" class="primary">Salvar</button>
+        <button id="cancelBtn" class="secondary">Cancelar</button>
+        <button id="deleteBtn" class="danger" style="margin-left:auto;display:none">Excluir</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    const current = localStorage.getItem('todo_current_user');
+    if(!current){ window.location.href = 'index.html'; }
+
+    // check if we have an id in querystring for edit
+    const params = new URLSearchParams(window.location.search);
+    const editId = params.get('id');
+
+    if(editId){
+      // load task into fields
+      const t = getTaskById(editId);
+      if(!t){ alert('Tarefa não encontrada'); window.location.href='dashboard.html'; }
+      document.getElementById('title').value = t.title;
+      document.getElementById('desc').value = t.desc || '';
+      document.getElementById('when').value = t.when || '';
+      document.getElementById('priority').value = t.priority || 'medium';
+      document.getElementById('deleteBtn').style.display = 'inline-block';
+    }
+
+    document.getElementById('backBtn').addEventListener('click', ()=> location.href='dashboard.html');
+    document.getElementById('cancelBtn').addEventListener('click', ()=> location.href='dashboard.html');
+
+    document.getElementById('saveBtn').addEventListener('click', ()=>{
+      const obj = {
+        title: document.getElementById('title').value.trim(),
+        desc: document.getElementById('desc').value.trim(),
+        when: document.getElementById('when').value.trim(),
+        priority: document.getElementById('priority').value
+      };
+      if(!obj.title){ alert('Título obrigatório'); return; }
+      if(editId){ updateTask(editId, obj); } else { createTask(obj); }
+      location.href = 'dashboard.html';
+    });
+
+    document.getElementById('deleteBtn').addEventListener('click', ()=>{
+      if(confirm('Excluir tarefa?')){ deleteTask(editId); location.href='dashboard.html'; }
+    });
+  </script>
+</body>
+</html>

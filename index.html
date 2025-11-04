@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>To-Do List - Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="frame">
+    <header class="app-header"><div class="avatar">📝</div><h1>To-Do List</h1></header>
+
+    <main class="card login-card">
+      <h2>Bem-vindo</h2>
+      <p class="muted">Organize seu dia — login local (demo).</p>
+
+      <label for="email">E‑mail</label>
+      <input id="email" type="email" placeholder="voce@exemplo.com">
+
+      <label for="password">Senha</label>
+      <input id="password" type="password" placeholder="senha">
+
+      <button id="loginBtn" class="primary">Login</button>
+
+      <p class="muted small">Não possui conta? <a id="createAccount" href="#">Criar conta</a></p>
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    document.getElementById('loginBtn').addEventListener('click', function(){
+      const email = document.getElementById('email').value.trim();
+      const pwd = document.getElementById('password').value.trim();
+      if(!email || !pwd){ alert('Preencha e-mail e senha (demo).'); return; }
+      localStorage.setItem('todo_current_user', email.toLowerCase());
+      if(!localStorage.getItem('todo_data_' + email.toLowerCase())) {
+        localStorage.setItem('todo_data_' + email.toLowerCase(), JSON.stringify([]));
+      }
+      window.location.href = 'dashboard.html';
+    });
+
+    document.getElementById('createAccount').addEventListener('click', function(e){
+      e.preventDefault();
+      const email = prompt('Digite um e-mail para cadastrar (demo):');
+      if(email) { alert('Conta criada (demo). Use login.'); document.getElementById('email').value = email; }
+    });
+    
+  </script>
+</body>
+</html>

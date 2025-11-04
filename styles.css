@@ -1,0 +1,28 @@
+:root{
+  --bg:#eef1f8; --card:#ffffff; --muted:#6b7280; --accent1:#6f42c1; --accent2:#8257e5; --success:#14a37f; --danger:#e11d48;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Helvetica,Arial;background:var(--bg);display:flex;align-items:center;justify-content:center;height:100vh}
+.frame{width:380px;height:700px;border-radius:20px;background:linear-gradient(180deg,#ffffff,#f7f8fb);box-shadow:0 10px 30px rgba(2,6,23,0.08);overflow:hidden;display:flex;flex-direction:column}
+.app-header{display:flex;align-items:center;gap:12px;padding:18px;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff}
+.app-header .avatar{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center}
+.card{flex:1;padding:18px;overflow:auto;background:transparent}
+.login-card{max-width:320px;margin:18px auto;border-radius:10px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+input, textarea, select{width:100%;padding:10px;margin-top:6px;border:1px solid #e6e9ef;border-radius:10px;font-size:15px}
+label{font-weight:600;margin-top:8px;display:block}
+.primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;border:none;padding:10px;border-radius:10px;cursor:pointer;font-weight:700}
+.secondary{background:#f3f4f6;border:none;padding:10px;border-radius:10px;cursor:pointer}
+.danger{background:var(--danger);color:#fff;border:none;padding:10px;border-radius:10px;cursor:pointer}
+.center{text-align:center}
+.task-list{list-style:none;padding:0;margin:0}
+.todo-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:#fff;margin-bottom:10px;box-shadow:0 4px 18px rgba(2,6,23,0.04)}
+.todo-text{flex:1;cursor:pointer}
+.delete-btn{background:transparent;border:none;color:var(--danger);font-size:18px;cursor:pointer}
+.bottom-nav{display:flex;align-items:center;justify-content:space-around;padding:12px;border-top:1px solid #eef2ff;background:transparent}
+.fab{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;border:none;font-size:28px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.12)}
+.progress{height:14px;background:#eef2f6;border-radius:999px;overflow:hidden;margin-top:8px}
+.progress-bar{height:100%;background:var(--success);width:0}
+.link-btn{background:transparent;border:none;color:#fff;font-weight:600;cursor:pointer}
+.center{display:flex;align-items:center;justify-content:center}
