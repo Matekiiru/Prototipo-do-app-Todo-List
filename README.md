@@ -30,8 +30,8 @@ O projeto foi desenvolvido com base em um **wireframe** previamente planejado
 ## 🚀 Como Executar o Projeto
 > Insira aqui orientações sobre como clonar o repositório e executar o projeto.
 >
-> Imagens Whireframe
->
+
+## --Imagens Whireframe--
 [login](imagens/login)
 
 [Tarefas](imagens/tarefas)
